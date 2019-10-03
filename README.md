@@ -1,19 +1,21 @@
-Node Typescript
-=======================
-[![Dependency Status](https://david-dm.org/abz0/node-ts/status.svg?style=flat)](https://david-dm.org/abz0/node-ts) [![devDependencies Status](https://david-dm.org/abz0/node-ts/dev-status.svg)](https://david-dm.org/abz0/node-ts?type=dev)
+# API Project: Timestamp Microservice
 
-A starting point for Node.js express apps with TypeScript
+-   The API endpoint is GET [project_url]/api/:date_string?
 
-### 1-Step Deployment with Heroku
+-   A date string is valid if can be successfully parsed by new Date(date_string).
 
-<img src="https://upload.wikimedia.org/wikipedia/en/a/a9/Heroku_logo.png" width="200">
+-   If the date string is empty it should be equivalent to trigger new Date(), i.e. the service uses the current timestamp.
 
-- Download and install [Heroku Toolbelt](https://toolbelt.heroku.com/)
-- In a terminal, run `heroku login` and enter your Heroku credentials
-- From *your app* directory run `heroku create`
-- Run `heroku addons:create mongolab`.  This will set up the mLab add-on and configure the `MONGODB_URI` environment variable in your Heroku app for you.
-- Lastly, do `git push heroku master`.  Done!
+-   If the date string is valid the api returns a JSON having the structure e.g. {"unix": 1479663089000 ,"utc": "Sun, 20 Nov 2016 17:31:29 GMT"}
 
-**Note:** To install Heroku add-ons your account must be verified.
+-   If the date string is invalid the api returns a JSON having the structure
+    {"error" : "Invalid Date" }.
 
----
+### Example Usage:
+
+-   https://abzo-timestamp-microservice.herokuapp.com/api/2015-12-25
+-   https://abzo-timestamp-microservice.herokuapp.com/api/1450137600
+
+### Example Output:
+
+{"unix":1451001600000, "utc":"Fri, 25 Dec 2015 00:00:00 GMT"}
