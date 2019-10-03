@@ -4,7 +4,7 @@
   "description": "A starting point for Node.js express apps with TypeScript",
   "main": "server.ts",
   "scripts": {
-    "start": "npm run build && npm run serve",
+    "start": "node lib/server.js",
     "serve": "nodemon lib/server.js",
     "build": "tsc",
     "watch": "tsc  -w"
